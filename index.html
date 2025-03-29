@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osmanlıca Kelime Ezber</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body class="osmanli">
+    <div class="app">
+        <!-- Üst Bar -->
+        <header>
+            <h1>Osmanlıca Ezber</h1>
+            <div id="tarih-saat"></div>
+            <button id="hamburger"><i class="fas fa-bars"></i></button>
+        </header>
+
+        <!-- İçerik Alanı -->
+        <main id="content">
+            <div id="ana-sayfa" class="section active">
+                <div class="card">
+                    <div class="osmanli-banner" id="osmanli-banner">
+                        <h2 id="hosgeldin-mesaj"><i class="fas fa-home"></i> Hoş Geldiniz!</h2>
+                    </div>
+                    <div id="gunun-kelimesi">
+                        <h3>Günün Kelimesi</h3>
+                        <p>Kelime: <span id="gunun-kelime"></span></p>
+                        <p>Osmanlıca: <span id="gunun-osmanlica"></span> <button id="sesli-oku"><i class="fas fa-volume-up"></i> Sesli Oku</button></p>
+                        <p>Anlam: <span id="gunun-anlam"></span></p>
+                    </div>
+                    <div id="ilerleme-ozeti">
+                        <h3>İlerlemen</h3>
+                        <p>Öğrenilen: <span id="ana-ogrenilen">0</span>/<span id="ana-toplam">0</span>  
+                           Puan: <span id="ana-puan">0</span>  
+                           Günlük Hedef: <span id="ana-gunluk-hedef">0</span>/<span id="ana-hedef-sayi">5</span></p>
+                    </div>
+                    <div id="gunluk-rozet">
+                        <h3>Günlük Rozet Hedefi</h3>
+                        <p id="rozet-hedef"></p>
+                    </div>
+                    <div class="button-group">
+                        <button onclick="showSection('kelimeler')"><i class="fas fa-book"></i> Kelimelere Başla</button>
+                        <button onclick="showSection('test')"><i class="fas fa-question"></i> Quiz Oyna</button>
+                        <button onclick="showSection('oyun')"><i class="fas fa-gamepad"></i> Adam Asmaca</button>
+                    </div>
+                </div>
+            </div>
+            <div id="kelimeler" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-book"></i> Kelimeler</h2>
+                    <p>Kelime: <span id="kelime"></span></p>
+                    <p>Osmanlica: <span id="osmanlica"></span></p>
+                    <input type="text" id="anlam" placeholder="Anlamını gir">
+                    <div class="button-group">
+                        <button id="onceki"><i class="fas fa-arrow-left"></i> Önceki</button>
+                        <button id="kontrol"><i class="fas fa-check"></i> Kontrol</button>
+                        <button id="sonraki"><i class="fas fa-arrow-right"></i> Sonraki</button>
+                        <button id="ipucu"><i class="fas fa-lightbulb"></i> İpucu</button>
+                    </div>
+                    <div id="ipucu-alani"></div>
+                    <div id="sonuc"></div>
+                </div>
+            </div>
+            <div id="profil" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-user"></i> Profil</h2>
+                    <p>Öğrenilen Kelimeler: <span id="ogrenilen">0</span> / Toplam: <span id="toplam">0</span> (<span id="ogrenme-orani">0%</span>)</p>
+                    <p>Puan: <span id="puan">0</span></p>
+                    <p>Günlük Hedef: <span id="gunluk-hedef">0</span>/<span id="hedef-sayi">5</span></p>
+                    <p>Bugünkü Aktiviteler: <span id="gunluk-aktivite">0</span></p>
+                    <p>En İyi Gün: <span id="en-iyi-gun">-</span></p>
+                    <p>Ortalama Günlük Puan: <span id="ortalama-puan">0</span></p>
+                    <p>Doğru/Yanlış: <span id="dogru-yanlis">0/0</span> (<span id="dogruluk-orani">0%</span>)</p>
+                    <p>Toplam Süre: <span id="toplam-sure">0 dk</span></p>
+                    <p>Haftalık İlerleme: <span id="haftalik-ilerleme">0</span> Kelime</p>
+                    <p>Favori Bölüm: <span id="favori-bolum">-</span></p>
+                    <p>Kelime Tekrarları: <span id="kelime-tekrar">-</span></p>
+                    <p>Rozetler: <span id="rozetler">-</span></p>
+                </div>
+            </div>
+            <div id="test" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-question"></i> Çoktan Seçmeli Quiz</h2>
+                    <p id="test-soru"></p>
+                    <div id="secenekler"></div>
+                    <div id="test-sonuc"></div>
+                </div>
+            </div>
+            <div id="oyun" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-gamepad"></i> Adam Asmaca</h2>
+                    <p id="oyun-kelime"></p>
+                    <p>Kalan Hak: <span id="hak">6</span></p>
+                    <input type="text" id="harf" maxlength="1" placeholder="Harf gir">
+                    <div class="button-group">
+                        <button id="tahmin"><i class="fas fa-search"></i> Tahmin Et</button>
+                        <button id="oyun-ipucu"><i class="fas fa-lightbulb"></i> İpucu</button>
+                    </div>
+                    <div id="oyun-ipucu-alani"></div>
+                    <div id="oyun-sonuc"></div>
+                </div>
+            </div>
+            <div id="eslestirme" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-puzzle-piece"></i> Eşleştirme</h2>
+                    <div id="eslestirme-kartlar"></div>
+                    <div id="eslestirme-sonuc"></div>
+                </div>
+            </div>
+            <div id="ayarlar" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-cog"></i> Ayarlar</h2>
+                    <label for="kullanici-adi">Adınız:</label>
+                    <input type="text" id="kullanici-adi" placeholder="Adınızı girin">
+                    <label for="tema-secici">Tema Seç:</label>
+                    <select id="tema-secici">
+                        <option value="acik">Açık Tema</option>
+                        <option value="koyu">Koyu Tema</option>
+                        <option value="osmanli" selected>Osmanlı Teması</option>
+                    </select>
+                    <label for="hedef-secici">Günlük Hedef (Kelime):</label>
+                    <select id="hedef-secici">
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                    <h3>Hatırlatma Ayarları</h3>
+                    <label for="hatirlatma-saati">Hatırlatma Saati Ekle:</label>
+                    <input type="time" id="hatirlatma-saati">
+                    <select id="gun-secici">
+                        <option value="her-gun" selected>Her Gün</option>
+                        <option value="0">Pazar</option>
+                        <option value="1">Pazartesi</option>
+                        <option value="2">Salı</option>
+                        <option value="3">Çarşamba</option>
+                        <option value="4">Perşembe</option>
+                        <option value="5">Cuma</option>
+                        <option value="6">Cumartesi</option>
+                    </select>
+                    <button id="hatirlatma-ekle"><i class="fas fa-plus"></i> Ekle</button>
+                    <ul id="hatirlatma-listesi"></ul>
+                    <button id="hatirlatma-kaydet"><i class="fas fa-save"></i> Hatırlatmaları Kaydet</button>
+                    <button id="pdf-indir"><i class="fas fa-download"></i> Kelimeleri PDF Olarak İndir</button>
+                </div>
+            </div>
+            <div id="kelimeler-listesi" class="section">
+                <div class="card">
+                    <h2><i class="fas fa-list"></i> Kelimeler Listesi</h2>
+                    <ul id="kelime-liste-ul"></ul>
+                </div>
+            </div>
+        </main>
+
+        <!-- Hamburger Menü (Yan Menü) -->
+        <div id="side-menu" class="side-menu">
+            <div class="banner">
+                <p id="ozlu-soz"></p>
+                <p id="ozlu-soz-anlam" class="anlam"></p>
+                <p id="ozlu-soz-sahip" class="sahip"></p>
+            </div>
+            <ul>
+                <li><button onclick="showSection('test')"><i class="fas fa-question"></i> Quiz</button></li>
+                <li><button onclick="showSection('oyun')"><i class="fas fa-gamepad"></i> Oyun</button></li>
+                <li><button onclick="showSection('eslestirme')"><i class="fas fa-puzzle-piece"></i> Eşleştirme</button></li>
+                <li><button onclick="showSection('ayarlar')"><i class="fas fa-cog"></i> Ayarlar</button></li>
+                <li><button onclick="showSection('kelimeler-listesi')"><i class="fas fa-list"></i> Kelimeler Listesi</button></li>
+                <li><button id="iletisim-btn"><i class="fas fa-envelope"></i> İletişim</button></li>
+                <li><button id="paylas-btn"><i class="fas fa-share-alt"></i> Paylaş</button></li>
+            </ul>
+        </div>
+
+        <!-- Alt Sekme Çubuğu -->
+        <nav class="tab-bar">
+            <button onclick="showSection('ana-sayfa')" class="active"><i class="fas fa-home"></i> Ana Sayfa</button>
+            <button onclick="showSection('kelimeler')"><i class="fas fa-book"></i> Kelimeler</button>
+            <button onclick="showSection('profil')"><i class="fas fa-user"></i> Profil</button>
+        </nav>
+    </div>
+</body>
+</html>

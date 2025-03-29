@@ -1,0 +1,522 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s, color 0.3s;
+}
+
+body.acik {
+    background: #f5f5f5;
+    color: #333;
+}
+
+body.koyu {
+    background: #333;
+    color: #fff;
+}
+
+body.koyu .app {
+    background: #444;
+}
+
+body.koyu .card {
+    background: #555;
+}
+
+body.koyu .tab-bar {
+    background: #444;
+    border-top: 1px solid #666;
+}
+
+body.koyu .side-menu {
+    background: #444;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+body.koyu #kelime-liste-ul li {
+    background: #555;
+    color: #fff;
+}
+
+body.koyu #kelime-liste-ul li .anlam-tooltip {
+    background: #666;
+    color: #fff;
+}
+
+body.koyu .banner {
+    background: url('https://www.transparenttextures.com/patterns/ottoman-dark.png'), #2c2c2c;
+    border-bottom: 3px double #d4af37;
+}
+
+body.koyu .banner p {
+    color: #d4af37;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+body.koyu .banner .anlam,
+body.koyu .banner .sahip {
+    color: #ccc;
+}
+
+body.osmanli {
+    background: #e6f0e6 url('https://www.transparenttextures.com/patterns/ottoman.png');
+    color: #333;
+}
+
+.app {
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+header {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.4em;
+    font-family: 'Georgia', serif;
+}
+
+#tarih-saat {
+    font-size: 0.9em;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#hamburger {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#hamburger:hover {
+    transform: rotate(90deg);
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    margin: 0 0 15px;
+    font-size: 1.2em;
+    color: #2e7d32;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card h3 {
+    margin: 15px 0 10px;
+    font-size: 1.1em;
+    color: #388e3c;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 1em;
+}
+
+.osmanli-banner {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 3px double #8b4513;
+    margin-bottom: 20px;
+}
+
+.osmanli-banner h2 {
+    color: #8b4513;
+    font-family: 'Georgia', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#gunun-kelimesi, #ilerleme-ozeti, #gunluk-rozet {
+    margin: 15px 0;
+}
+
+#gunun-kelimesi h3, #ilerleme-ozeti h3, #gunluk-rozet h3 {
+    font-size: 1.1em;
+    color: #388e3c;
+    margin-bottom: 8px;
+}
+
+#gunun-kelimesi p, #ilerleme-ozeti p, #gunluk-rozet p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+#gunun-kelimesi span, #ilerleme-ozeti span {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+#sesli-oku {
+    background: #4caf50;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+
+#ilerleme-ozeti p {
+    display: flex;
+    justify-content: space-between;
+}
+
+#oyun-ipucu-alani {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+#profil .card span {
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+#kelime, #test-soru {
+    font-size: 1.4em;
+}
+
+#osmanlica {
+    font-size: 1.6em;
+}
+
+.tab-bar {
+    display: flex;
+    justify-content: space-around;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+    position: sticky;
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-bar button {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.3s;
+}
+
+.tab-bar button.active {
+    color: #4caf50;
+    transform: scale(1.1);
+}
+
+.side-menu {
+    position: absolute;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease;
+    overflow-y: auto;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.side-menu button {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.side-menu button:hover {
+    background: linear-gradient(135deg, #388e3c, #2e7d32);
+    transform: translateX(5px);
+}
+
+.banner {
+    width: 100%;
+    height: 120px;
+    background: url('https://www.transparenttextures.com/patterns/ottoman.png'), #f9e8d9;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px double #8b4513;
+    padding: 10px;
+}
+
+.banner p {
+    font-size: 1.4em;
+    color: #8b4513;
+    font-family: 'Georgia', serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    direction: rtl;
+    margin: 3px 0;
+}
+
+.banner .anlam {
+    font-size: 0.9em;
+    color: #555;
+    font-family: 'Arial', sans-serif;
+    direction: ltr;
+    text-shadow: none;
+}
+
+.banner .sahip {
+    font-size: 0.8em;
+    color: #777;
+    font-style: italic;
+    direction: ltr;
+    text-shadow: none;
+}
+
+#kelime-liste-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#kelime-liste-ul li {
+    position: relative;
+    padding: 10px;
+    background: #f5f5f5;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    direction: rtl;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#kelime-liste-ul li:hover {
+    background: #e0e0e0;
+}
+
+#kelime-liste-ul li .anlam-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+}
+
+#kelime-liste-ul li:hover .anlam-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #388e3c, #2e7d32);
+    transform: scale(1.05);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+input, select {
+    padding: 8px;
+    margin: 5px 0;
+    width: calc(100% - 16px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+#hatirlatma-listesi {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+#hatirlatma-listesi li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+#hatirlatma-listesi button {
+    background: #c62828;
+    padding: 5px;
+    font-size: 0.8em;
+}
+
+#sonuc, #test-sonuc, #oyun-sonuc, #eslestirme-sonuc {
+    margin-top: 10px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#ipucu-alani {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+
+.dogru {
+    color: #2e7d32;
+    background: #e6f0e6;
+}
+
+.yanlis {
+    color: #c62828;
+    background: #ffebee;
+}
+
+#eslestirme-kartlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.kart {
+    width: 100px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.kart:disabled {
+    background: #e6f0e6;
+    cursor: not-allowed;
+}
+
+.kart:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+#secenekler {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.secenek {
+    padding: 10px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.secenek:hover {
+    background: #e0e0e0;
+}
+
+.secenek:disabled {
+    cursor: not-allowed;
+}
+
+.secenek.dogru {
+    background: #e6f0e6;
+    border-color: #2e7d32;
+}
+
+.secenek.yanlis {
+    background: #ffebee;
+    border-color: #c62828;
+}
